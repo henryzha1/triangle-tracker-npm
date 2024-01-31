@@ -1,35 +1,39 @@
 import './css/styles.css';
-import Entry from './entry.js';
 
-document.getElementById("entry").value = "";
-document.getElementById("form").addEventListener("submit", (e) => {
+function testing(num1,num2,num3) {
+  let ans = "";
+  let message = "";
+  if (num1+num2<=num3 || num2+num3<=num1 || num1+num3<=num2){
+      document.getElementById("ans").removeAttribute("class");
+      ans = "NOT A TRIANGLE";
+  } else if(num1 === num2 && num2 === num3) {
+      document.getElementById("ans").removeAttribute("class");
+      ans = "EQUILATERAL";
+  } else if(num1 === num2 || num2 === num3 || num1 === num3) {
+      document.getElementById("ans").removeAttribute("class");
+      ans = "ISOSCELES";
+  } else {
+      document.getElementById("ans").removeAttribute("class");
+      ans = "SCALENE";
+  }
+  message = "Side 1: " + num1 + " Side 2: " + num2 + " Side 3: " + num3 + " RESULT: " + ans;
+  document.getElementById("ans").innerText = message;
+  return message;
+}
+
+function calculate(e) {
   e.preventDefault();
+  const num1 = parseInt(document.getElementById("num1").value);
+  const num2 = parseInt(document.getElementById("num2").value);
+  const num3 = parseInt(document.getElementById("num3").value);
 
-  const titleSubmission = document.getElementById("title").value;
-  const entrySubmission = document.getElementById("entry").value;
-  const entry = new Entry(titleSubmission, entrySubmission);
-  
-  const output = document.getElementById("output");
-  let titleOutput = document.createElement("p");
-  titleOutput.innerText = "Title: " + entry.title;
-  output.append(titleOutput);
-  let entryOutput = document.createElement("p");
-  entryOutput.innerText = "Entry" + ": " + entry.entry;
-  output.append(entryOutput);
-  let words = document.createElement("p");
-  words.innerText = "Number of Words: " + entry.stats[0];
-  output.append(words);
-  let vowels = document.createElement("p");
-  vowels.innerText = "Number of Vowels: " + entry.stats[1];
-  output.append(vowels);
-  let consonants = document.createElement("p");
-  consonants.innerText = "Number of Consonants: " + entry.stats[2];
-  output.append(consonants);
-  let sentence = document.createElement("p");
-  sentence.innerText = "First Sentence (max 8 words): " + entry.firstSentence;
-  output.append(sentence);
+  return testing(num1,num2,num3);
+}
 
-  document.getElementById("title").value = "";
-  document.getElementById("entry").value = "";
+
+window.addEventListener("load", function() {
+  const history = [];
+  document.querySelector("form").addEventListener("submit", function(e) {
+      history.push(calculate(e));
+  });
 });
-
