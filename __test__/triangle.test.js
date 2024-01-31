@@ -25,9 +25,7 @@ describe('Triangle', () => {
   });
 
   test('should correctly determine triangle is a scalene', () => {
-    const notATriangle = new Triangle(100,4,20);
+    const notATriangle = new Triangle(3,4,5);
     expect(notATriangle.testing()).toEqual("SCALENE");
   });
-
-
 });
