@@ -20,7 +20,7 @@ describe('Triangle', () => {
   });
 
   test('should correctly determine triangle is an isosceles', () => {
-    const notATriangle = new Triangle(100,4,20);
+    const notATriangle = new Triangle(2,2,3);
     expect(notATriangle.testing()).toEqual("ISOSCELES");
   });
 
