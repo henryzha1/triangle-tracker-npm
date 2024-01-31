@@ -14,4 +14,4 @@ Triangle.prototype.testing = function() {
   } else {
       return("SCALENE");
   }
-}
+};
