@@ -15,7 +15,7 @@ describe('Triangle', () => {
   });
 
   test('should correctly determine triangle is an equilateral', () => {
-    const notATriangle = new Triangle(100,4,20);
+    const notATriangle = new Triangle(2,2,2);
     expect(notATriangle.testing()).toEqual("EQUILATERAL");
   });
 
